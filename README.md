@@ -33,9 +33,6 @@ jobs:
       - uses: actions/checkout@v1
       - name: Add commit comment
         run: |
-          # git clone https://github.com/pawarashish564/Infinite-Series-Calculator.git
-          # cd Infinite-Series-Calculator
-          # export ver="hello world from the GITHUB BOT"
           uname -a >> demo
           export ver=$(cat demo)
           jq -nc '{"body":env.ver}' | \
