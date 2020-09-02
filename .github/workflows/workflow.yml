@@ -9,9 +9,16 @@ jobs:
         run: |
           git clone https://github.com/pawarashish564/Infinite-Series-Calculator.git
           cd Infinite-Series-Calculator
-          export a="hello world"
-          jq -nc '{"body":env.a}' | \
+          ver=$(python --version)
+          jq -nc '{"body":env.ver}' | \
           curl -sL  -X POST -d @- \
             -H "Content-Type: application/json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"
+          uname=$(uname -a)
+          jq -nc '{"body":env.uname}' | \
+          curl -sL  -X POST -d @- \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"
+          
