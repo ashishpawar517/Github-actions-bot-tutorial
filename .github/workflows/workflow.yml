@@ -10,7 +10,7 @@ jobs:
           git clone https://github.com/pawarashish564/Infinite-Series-Calculator.git
           cd Infinite-Series-Calculator
           a='hello world'
-          jq -nc '{"body": "added this message- ${a} " }' | \
+          jq -nc '{"body": "added this message-"'${a}' "}" | \
           curl -sL  -X POST -d @- \
             -H "Content-Type: application/json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
