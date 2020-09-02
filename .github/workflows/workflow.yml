@@ -14,7 +14,7 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"
-          export py=$(python --version)
+          export py=$(python3 --version)
           jq -nc '{"body":env.py}' | \
           curl -sL  -X POST -d @- \
             -H "Content-Type: application/json" \
