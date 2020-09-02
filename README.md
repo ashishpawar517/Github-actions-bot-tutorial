@@ -1,5 +1,5 @@
-# Github-actions-bot-tutorial 
-
+ <h1 align="center"> Github Actions Bot Tutorial </h1>
+<img src=".github/Github_action_bot.png">
 
 ### Hello world from Github Actions bot.
 
