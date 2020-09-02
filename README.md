@@ -1,7 +1,7 @@
 # Github-actions-bot-tutorial 
 
 
-see this using Github API
+Hello world from Github Actions bot.
 
 ```yaml
 name: commit comment
@@ -15,8 +15,8 @@ jobs:
         run: |
           git clone https://github.com/pawarashish564/Infinite-Series-Calculator.git
           cd Infinite-Series-Calculator
-          export a="hello world"
-          jq -nc '{"body":env.a}' | \
+          export msg="hello world"
+          jq -nc '{"body":env.msg}' | \
           curl -sL  -X POST -d @- \
             -H "Content-Type: application/json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
