@@ -9,7 +9,7 @@ jobs:
         run: |
           git clone https://github.com/pawarashish564/Infinite-Series-Calculator.git
           cd Infinite-Series-Calculator
-          ver=$(python --version)
+          export ver=$(python --version)
           jq -nc '{"body":env.ver}' | \
           curl -sL  -X POST -d @- \
             -H "Content-Type: application/json" \
