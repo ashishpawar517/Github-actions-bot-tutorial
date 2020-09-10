@@ -7,4 +7,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Add commit comment
         run: |
-          curl -u "$REPORTER":"$TOKEN" https://api.github.com/repos/$OWNER/$REPO/issues -d @$JSON_WITH_ISSUE 
+          jq -nc '{"title": "Issue Title","body": "Issue description"}' | \
+          curl -sL  -X POST -d @- \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/pawarashish564/$GITHUB_REPOSITORY/issues"
