@@ -7,9 +7,5 @@ jobs:
       - uses: actions/checkout@v1
       - name: Add commit comment
         run: |
-        
-           jq -nc '{"title": "Found a bug","body": "Im having a problem with this."}' | \
-           curl -sL  -X POST -d @- \
-            -H "Content-Type: application/json" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/pawarashish564/$GITHUB_REPOSITORY/issues"
+          curl -X POST -i -d '{"title":"my-new-repo-issue","body":"my new issue description"}' https://api.github.com/repos/pawarashish564/$GITHUB_REPOSITORY/issues
+          
