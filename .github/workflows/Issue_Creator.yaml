@@ -1,5 +1,3 @@
-# jq -nc '{"title":"Issue","body": "issues"}'| curl -X POST -u pawarashish564:7cbbac516d7c4c4d55591f9480c951adb7e16a99 -d @- 
-# https://api.github.com/repos/pawarashish564/Github-actions-bot-tutorial/issues
 
 name: Issue Creator
 on: push
@@ -8,10 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Add commit comment
+      - name: Create A Issue
         run: |
-        
-          jq -nc '{"title":"Issue","body": "issue created from bot"}' | \
+          export num=$(od -An -N2 -i /dev/random)
+          jq -nc '{"title":("Issue No"+env.num),"body": "issue created from bot"}' | \
           curl -sL  -X POST -d @- \
             -H "Content-Type: application/json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
