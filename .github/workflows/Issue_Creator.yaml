@@ -1,0 +1,16 @@
+name: Issue Creator
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Add commit comment
+        run: |
+        
+          export py=$(python3 --version)
+          jq -nc '{"title": "Found a bug","body": "I'm having a problem with this."}' | \
+          curl -sL  -X POST -d @- \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/"
