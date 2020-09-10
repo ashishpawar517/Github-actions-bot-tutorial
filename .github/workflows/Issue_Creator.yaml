@@ -7,5 +7,5 @@ jobs:
       - uses: actions/checkout@v1
       - name: Add commit comment
         run: |
-          curl -X POST -i -d '{"title":"my-new-repo-issue","body":"my new issue description"}' https://api.github.com/repos/pawarashish564/$GITHUB_REPOSITORY/issues
+          curl -X POST -i -d '{"title":"my-new-repo-issue","body":"my new issue description"}' https://api.github.com/repos/pawarashish564/Github-actions-bot-tutorial/issues
           
