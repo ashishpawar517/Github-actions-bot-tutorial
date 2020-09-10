@@ -1,0 +1,17 @@
+
+name: PR Creator
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create A PR
+        run: |
+          export num=$(od -An -N2 -i /dev/random)
+          jq -nc '{"title":("PR No"+env.num),"body": "PR created from bot","head": "Github-actions-bot-tutorial:new-feature","base": "master"}' | \
+          curl -sL  -X POST -d @- \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/pawarashish564/Github-actions-bot-tutorial/pulls"
+          
