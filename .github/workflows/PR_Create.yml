@@ -9,7 +9,9 @@ jobs:
       - name: Set environment variables
         id: vars
         run: |
-            echo ::set-env name=PULL_REQUEST_TITLE::"[Test] Add report file $(date +%d-%m-%Y) "
+            echo ::set-env name=PULL_REQUEST_TITLE::"[Test] Add report file $(date +%d-%m-%Y) $(od -An -N2 -i /dev/random)"
+            echo ::set-env name=BRANCH::"branch $(od -An -N2 -i /dev/random)"
+            
       - name: Make changes to pull request
         run: date +%s >> fileData.txt
 
@@ -22,7 +24,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: example-patches
+          branch: ${{ env.BRANCH }} 
           delete-branch: true
           title: ${{ env.PULL_REQUEST_TITLE }} 
           body: |
