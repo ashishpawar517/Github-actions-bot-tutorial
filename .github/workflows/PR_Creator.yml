@@ -8,13 +8,16 @@ jobs:
 
       - name: Make changes to pull request
         run: |
-          echo ::set-output name=pr_title::"[Test] PR on $(date +%d-%m-%Y) No $(od -An -N2 -i /dev/random)"
           git config user.name 'pawarashish564'
           git config user.email 'pawarashish564@gmail.com'
           date +%s >> fileData.txt
           export num=$(od -An -N2 -i /dev/random)
           git add fileData.txt
           git commit -m "commit $num"
+      - name: Create Pull Request
+        run: |
+          echo ::set-output name=pr_title::"[Test] PR on $(date +%d-%m-%Y) No $(od -An -N2 -i /dev/random)"
+
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
@@ -43,4 +46,6 @@ jobs:
           # milestone: 1
           draft: false
 
-      
+      - name: Check output
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
