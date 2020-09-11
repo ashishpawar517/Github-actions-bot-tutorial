@@ -12,7 +12,7 @@ jobs:
             echo ::set-env name=PULL_REQUEST_TITLE::"[Feature] PR on  $(date +%d-%m-%Y) no $(od -An -N2 -i /dev/random) "
             echo ::set-env name=B_TITLE::"branch-no-$(od -An -N2 -i /dev/random)"
       
-        - name: Make changes to pull request
+      - name: Make changes to pull request
         run: date +%s >> fileData.txt
 
       - name: Create Pull Request
