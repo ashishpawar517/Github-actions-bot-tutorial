@@ -15,7 +15,6 @@ jobs:
           export num=$(od -An -N2 -i /dev/random)
           git add fileData.txt
           git commit -m "commit $num"
-      - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
@@ -44,6 +43,4 @@ jobs:
           # milestone: 1
           draft: false
 
-      - name: Check output
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+      
