@@ -11,7 +11,7 @@ jobs:
           echo ::set-env name=PULL_REQUEST_TITLE::"[Test] PR on $(date +%d-%m-%Y) No $(od -An -N2 -i /dev/random)"
       
       - name: Make changes to pull request
-        run: date +%s > fileData.txt
+        run: date +%s >> fileData.txt
 
       - name: Create Pull Request
         id: cpr
@@ -24,7 +24,7 @@ jobs:
           signoff: false
           branch: example-patches
           delete-branch: true
-          title: 'Demo PR TITLE '
+          title: ${{ steps.vars.outputs.pr_title }} 
           body: |
             Update report
             - Updated with *today's* date
