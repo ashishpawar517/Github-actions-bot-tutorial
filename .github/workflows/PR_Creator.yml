@@ -8,6 +8,7 @@ jobs:
 
       - name: Make changes to pull request
         run: |
+          echo ::set-output name=pr_title::"[Test] PR on $(date +%d-%m-%Y) No $(od -An -N2 -i /dev/random)"
           git config user.name 'pawarashish564'
           git config user.email 'pawarashish564@gmail.com'
           date +%s >> fileData.txt
@@ -25,7 +26,7 @@ jobs:
           signoff: false
           branch: example-patches
           delete-branch: true
-          # title: '[Example] Update report'
+          title: ${{ steps.vars.outputs.pr_title }}
           body: |
             Update report
             - Updated with *today's* date
