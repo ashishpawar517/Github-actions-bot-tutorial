@@ -9,8 +9,7 @@ jobs:
       - name: Set environment variables
         id: vars
         run: |
-          echo ::set-env name=PULL_REQUEST_TITLE::"[Test] PR on $(date +%d-%m-%Y) No $(od -An -N2 -i /dev/random)"
-      
+            echo ::set-env name=PULL_REQUEST_TITLE::"[Test] Add report file $(date +%d-%m-%Y)"
       - name: Make changes to pull request
         run: date +%s >> fileData.txt
 
@@ -25,7 +24,7 @@ jobs:
           signoff: false
           branch: example-patches
           delete-branch: true
-          title: ${{ steps.vars.outputs.pr_title }} 
+          title: ${{ env.PULL_REQUEST_TITLE }} 
           body: |
             Update report
             - Updated with *today's* date
