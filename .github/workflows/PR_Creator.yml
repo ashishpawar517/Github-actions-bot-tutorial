@@ -5,13 +5,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
       - name: Create A PR
-        run: |
-          export num=$(od -An -N2 -i /dev/random)
-          jq -nc '{"title":("PR No"+env.num),"body": "PR created from bot","head": "Github-actions-bot-tutorial:new-feature","base": "master"}' | \
-          curl -sL  -X POST -d @- \
-            -H "Content-Type: application/json" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/pawarashish564/Github-actions-bot-tutorial/pulls"
-          
+        uses: technote-space/create-pr-action@v2
+        with:
+          EXECUTE_COMMANDS: |
+            export num=$(od -An -N2 -i /dev/random) 
+            echo "Hello code $num" >> fileData.txt    
+            COMMIT_MESSAGE: 'Added data'
+            COMMIT_NAME: 'GitHub Actions'
+            COMMIT_EMAIL: 'example@example.com'
+            PR_BRANCH_NAME: 'data-update-${PR_ID}'
+            PR_TITLE: 'PR From the Bot'
