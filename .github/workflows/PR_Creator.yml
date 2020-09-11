@@ -1,4 +1,4 @@
-name: PR Creator
+name: PR  Creator
 on: push
 jobs:
   createPullRequest:
@@ -30,8 +30,8 @@ jobs:
           labels: |
             report
             automated pr
-          assignees: peter-evans
-          reviewers: 
+          assignees: pawarashish564
+          reviewers: pawarashish564
           team-reviewers: |
             owners
             maintainers
