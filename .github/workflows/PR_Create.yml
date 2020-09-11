@@ -24,7 +24,7 @@ jobs:
           signoff: false
           branch: example-patches
           delete-branch: true
-          title: ${{ steps.vars.outputs.pr_title }}  
+          title: 'Demo PR TITLE '
           body: |
             Update report
             - Updated with *today's* date
