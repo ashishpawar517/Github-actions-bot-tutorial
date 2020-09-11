@@ -33,12 +33,12 @@ jobs:
           labels: |
             report
             automated pr
-          assignees: peter-evans
-          reviewers: 
-          team-reviewers: |
-            owners
-            maintainers
-          milestone: 1
+        #   assignees: peter-evans
+        #   reviewers: 
+        #   team-reviewers: |
+            # owners
+            # maintainers
+        #   milestone: 1
           draft: false
 
       - name: Check output
