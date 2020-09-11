@@ -12,6 +12,7 @@ jobs:
           git config user.email 'pawarashish564@gmail.com'
           date +%s >> fileData.txt
           export num=$(od -An -N2 -i /dev/random)
+          git add fileData.txt
           git commit -m "commit $num"
       - name: Create Pull Request
         id: cpr
