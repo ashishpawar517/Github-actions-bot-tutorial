@@ -8,6 +8,7 @@ jobs:
       - name: Create A PR
         uses: technote-space/create-pr-action@v2
         with:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           EXECUTE_COMMANDS: |
             export num=$(od -An -N2 -i /dev/random) 
             echo "Hello code $num" >> fileData.txt    
