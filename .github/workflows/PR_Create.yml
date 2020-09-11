@@ -10,7 +10,7 @@ jobs:
         id: vars
         run: |
             echo ::set-env name=PULL_REQUEST_TITLE::"[Test] Add report file $(date +%d-%m-%Y) $(od -An -N2 -i /dev/random)"
-            echo ::set-env name=BRANCH::"branch $(od -An -N2 -i /dev/random)"
+            echo ::set-env name=BRANCH::"branch_$(( ( RANDOM % 1000 )  + 1 ))"
             
       - name: Make changes to pull request
         run: date +%s >> fileData.txt
