@@ -23,11 +23,11 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # commit-message: Update report 
+          commit-message: Update report 
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: example-patches
+          branch: example-patches-new
           delete-branch: true
           title: ${{ steps.vars.outputs.pr_title }}
           body: |
