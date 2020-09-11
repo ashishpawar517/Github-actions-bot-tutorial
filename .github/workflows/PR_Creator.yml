@@ -7,19 +7,18 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Make changes to pull request
-        run: |
-          export num=$(od -An -N2 -i /dev/random)
-          echo "Hello world $num" >> fileData.txt
+        run: date +%s > fileData.txt
+
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Update FileData
+          commit-message: Update report
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: patch-branch 
+          branch: example-patches
           delete-branch: true
           title: '[Example] Update report'
           body: |
